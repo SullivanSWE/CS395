@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+    <title>SWE Cards</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href=" ">About</a></li>
+        </ul>
+      </nav>
+      <div id="inputs">
+        <div>
+          <label for="name">Fullname:</label>
+          <input id="name" type="text" />
+        </div>
+        <div>
+          <label for="about">Tell us about you:</label>
+          <input id="about" type="text" />
+        </div>
+        <div>
+          <label for="linkedInLink">LinkedIn:</label>
+          <input id="linkedInLink" type="text" />
+        </div>
+        <div>
+          <label for="handshakeLink">Handshake:</label>
+          <input id="handshakeLink" type="text" />
+        </div>
+        <div>
+          <button id="createCard" type="button" onclick="addCard()">
+            Create Card
+          </button>
+        </div>
+      </div>
+      <main>
+        <div class="card" id="ogCard">
+          <img class="profile-pic" src="profile.png" alt="Profile Picture" />
+          <h2 class="name">Fullname</h2>
+          <p class="bio">About</p>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/YasserSDeghdegh" target="_blank"
+              >📂LinkedIn</a
+            >
+            <a
+              href="https://gmu.joinhandshake.com/profiles/fj8vh4"
+              target="_blank"
+              >🤝Handshake</a
+            >
+          </div>
+        </div>
+      </main>
+
+      <footer>Created by David, Micah, & Sully</footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5; 
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.navbar {
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0 auto 20px auto;
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0;
+  margin: 10px;
+}
+
+.navbar a {
+  color: #ff9999;
+  text-decoration: none;
+  padding: 15px;
+  font-weight: bold;
+  display: block;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+#inputs {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#inputs div {
+  display: flex;
+  margin-bottom: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+#inputs label {
+  width: 120px;
+  text-align: left;
+  padding-right: 10px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+#inputs input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#createCard {
+  background-color: #ff9999;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#createCard:hover {
+  background-color: #ff8080;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 25px; 
+  justify-content: center; 
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px;
+  width: 100%;
+  color: #777;
+}
+
+.card {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 250px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover:not(.active) {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-pic {
+  border-radius: 50%;
+  width: 120px; 
+  height: 120px; 
+  border: 3px solid #e0f7f7;
+  object-fit: cover;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.6em;
+  color: rgb(104, 184, 250);
+  margin-top: 15px;
+}
+
+.bio {
+  font-size: 1.1em;
+  color: rgb(91, 183, 214);
+  margin: 15px 0;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.social-links a {
+  color: #ff9999;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}

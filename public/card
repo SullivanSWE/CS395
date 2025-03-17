@@ -1,0 +1,15 @@
+<div class="card">
+          <img class="profile-pic" src="profile.png" alt="Profile Picture" />
+          <h2 class="name">Sully Deghdegh</h2>
+          <p class="bio">My name is Sully and I am a SWE (well... almost)</p>
+          <div class="social-links">
+            <a href="https://linkedin.com/in/YasserSDeghdegh" target="_blank"
+              >📂LinkedIn</a
+            >
+            <a
+              href="https://gmu.joinhandshake.com/profiles/fj8vh4"
+              target="_blank"
+              >🤝Handshake</a
+            >
+          </div>
+        </div>
