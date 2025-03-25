@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function() {
   // Fetch all cards when the page loads
   fetchCards();
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Function to fetch all cards from the backend
 async function fetchCards() {
   try {
-    const response = await fetch('http://localhost:3000/api/cards'); // Changed port to 3000
+    const response = await fetch('http://localhost:3000/api/cards');
     const cards = await response.json();
     
     // Clear existing cards (except the template)
@@ -38,6 +37,12 @@ function createCardElement(card) {
   newCard.id = 'card-' + card._id;
   newCard.style.display = 'block';
   
+  // Update profile image
+  const profilePicElement = newCard.getElementsByClassName('profile-pic')[0];
+  if (profilePicElement) {
+    profilePicElement.src = card.profileImageUrl || 'profile.png';
+  }
+  
   // Update name
   const nameElement = newCard.getElementsByClassName('name')[0];
   if (nameElement) {
@@ -66,6 +71,15 @@ function createCardElement(card) {
     }
   }
   
+  // Create delete button
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Delete';
+  deleteButton.classList.add('delete-card');
+  deleteButton.addEventListener('click', () => deleteCard(card._id));
+  
+  // Append delete button to the card
+  newCard.appendChild(deleteButton);
+  
   // Add the clone to the main element
   document.querySelector('main').appendChild(newCard);
 }
@@ -76,6 +90,7 @@ async function addCard() {
   const aboutValue = document.getElementById('about').value;
   const linkedInValue = document.getElementById('linkedInLink').value;
   const handshakeValue = document.getElementById('handshakeLink').value;
+  const profileImageUrlValue = document.getElementById('profileImageUrl').value;
   
   // Validate inputs
   if (!nameValue || !aboutValue) {
@@ -88,11 +103,12 @@ async function addCard() {
     name: nameValue,
     about: aboutValue,
     linkedInLink: linkedInValue,
-    handshakeLink: handshakeValue
+    handshakeLink: handshakeValue,
+    profileImageUrl: profileImageUrlValue || 'profile.png'
   };
   
   try {
-    // Send data to backend (updated port to 3000)
+    // Send data to backend
     const response = await fetch('http://localhost:3000/api/cards', {
       method: 'POST',
       headers: {
@@ -113,9 +129,29 @@ async function addCard() {
     document.getElementById('about').value = '';
     document.getElementById('linkedInLink').value = '';
     document.getElementById('handshakeLink').value = '';
+    document.getElementById('profileImageUrl').value = '';
     
   } catch (error) {
     console.error('Error creating card:', error);
     alert('Error creating card. Please try again.');
+  }
+}
+
+// Delete Card from MongoDB
+async function deleteCard(cardId) {
+  try {
+    const response = await fetch(`http://localhost:3000/api/cards/${cardId}`, {
+      method: 'DELETE'
+    });
+    
+    if (!response.ok) {
+      throw new Error('Failed to delete card');
+    }
+    
+    // Refresh cards from the database
+    fetchCards();
+  } catch (error) {
+    console.error('Error deleting card:', error);
+    alert('Error deleting card. Please try again.');
   }
 }
