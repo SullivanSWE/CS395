@@ -155,3 +155,23 @@ async function deleteCard(cardId) {
     alert('Error deleting card. Please try again.');
   }
 }
+
+// Modal functionality
+const modal = document.getElementById('aboutModal');
+const closeBtn = document.querySelector('.close-button');
+const aboutLink = document.querySelector('a[href=" "]');
+
+aboutLink.addEventListener('click', function (event) {
+  event.preventDefault();
+  modal.style.display = 'block';
+});
+
+closeBtn.addEventListener('click', function () {
+  modal.style.display = 'none';
+});
+
+window.addEventListener('click', function (event) {
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+});
