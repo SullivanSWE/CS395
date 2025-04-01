@@ -27,6 +27,10 @@ async function fetchCards() {
 
 // Function to create a card element from data
 function createCardElement(card) {
+  
+  console.log('Creating card for:', card.name);
+  console.log('GitHub link:', card.githubLink); //debug purposes
+
   // Get the original card as a template
   const template = document.getElementById('ogCard');
   
@@ -69,6 +73,15 @@ function createCardElement(card) {
     if (links[1] && card.handshakeLink) {
       links[1].href = card.handshakeLink;
     }
+
+    // Add GitHub link 
+    const githubAnchor = document.createElement('a');
+    githubAnchor.href = card.githubLink ? card.githubLink : 'https://github.com/';
+    githubAnchor.target = '_blank';
+    githubAnchor.textContent = '💻 GitHub';
+    socialLinks.appendChild(githubAnchor);
+    
+
   }
   
   // Create delete button
@@ -91,6 +104,8 @@ async function addCard() {
   const linkedInValue = document.getElementById('linkedInLink').value;
   const handshakeValue = document.getElementById('handshakeLink').value;
   const profileImageUrlValue = document.getElementById('profileImageUrl').value;
+  const githubValue = document.getElementById('githubLink').value;
+
   
   // Validate inputs
   if (!nameValue || !aboutValue) {
@@ -104,7 +119,8 @@ async function addCard() {
     about: aboutValue,
     linkedInLink: linkedInValue,
     handshakeLink: handshakeValue,
-    profileImageUrl: profileImageUrlValue || 'profile.png'
+    profileImageUrl: profileImageUrlValue || 'profile.png',
+    githubLink: githubValue
   };
   
   try {
@@ -130,6 +146,8 @@ async function addCard() {
     document.getElementById('linkedInLink').value = '';
     document.getElementById('handshakeLink').value = '';
     document.getElementById('profileImageUrl').value = '';
+    document.getElementById('githubLink').value = '';
+
     
   } catch (error) {
     console.error('Error creating card:', error);
